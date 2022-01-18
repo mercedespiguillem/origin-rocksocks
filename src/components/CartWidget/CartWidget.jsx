@@ -1,14 +1,14 @@
-import icono from './assets/icono.png';
+import icon from './assets/carrito.png';
 
 function CartWidget() {
     return (
-        <div>
-            <img src="assets/icono.png" alt="verduras"/>
+        <div className='m-2 p-2 '>
+            <img src={icon} alt="verduras"/>
         </div>
-    )
+    );
 }
 
 
 
-export default CartWidget
+export default CartWidget;
 
