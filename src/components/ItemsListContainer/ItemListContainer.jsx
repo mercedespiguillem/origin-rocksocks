@@ -2,6 +2,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 import { productos } from "../../helpers/products";
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 
 function ItemListContainer(props) {
   // promise // estados // useEffect
@@ -39,6 +40,7 @@ function ItemListContainer(props) {
       </div>
       <ItemCount stock={10} initial={1} onAdd={onAdd} />
       <ItemList products={products} />
+
     </div>
   );
 }
