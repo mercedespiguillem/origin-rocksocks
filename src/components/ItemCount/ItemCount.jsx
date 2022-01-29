@@ -26,21 +26,21 @@ function ItemCount({ initial, stock, onAdd }) {
 
   return (
     <div>
-      <Card>
+      <Card className="m-5">
         <Card.Body className="md-6">
-          <Button variant="secondary" onClick={decrease}>
+          <Button variant="secondary" size="l" onClick={decrease}>
             Quitar
           </Button>
           <br />
           {count}
           <br />
-          <Button variant="warning" onClick={increase}>
+          <Button variant="warning"  size="l" onClick={increase}>
             Agregar
           </Button>
           <br />
           <br />
           <div>
-            <Button variant="primary" onClick={addToChart}>
+            <Button variant="dark" onClick={addToChart}>
               Agregar al carrito
             </Button>
           </div>
