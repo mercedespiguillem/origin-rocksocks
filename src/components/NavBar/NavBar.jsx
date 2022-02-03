@@ -3,21 +3,32 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Logo from "../LogoSocks/Logo";
+import { Link } from "react-router-dom";
+
 
 function NavBar() {
   return (
     <div style={{ backgroundColor: "pink" }}>
-      <Navbar bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Logo />
         <Container>
-          <Navbar.Brand href="#home">RockSocks</Navbar.Brand>
+          <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
+          <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav>
+            <Link className="text-decoration-none" style={{ color: "white"}} to='/'>RockSocks
+            
+            </Link> 
+          </Nav> 
           <Nav className="me-auto">
-            <Nav.Link href="#Soquetes">Soquetes</Nav.Link>
-            <Nav.Link href="#Medias">Medias</Nav.Link>
-            <Nav.Link href="#Invisibles">Invisibles</Nav.Link>
+            <Link className='m-3 text-decoration-none'style={{ color: "white"}} to="category/dinosaurios">Dinosaurios</Link>
+            <Link className='m-3 text-decoration-none'style={{ color: "white"}} to="category/rayadas">Rayadas</Link>
+            <Link className='m-3 text-decoration-none'style={{ color: "white"}} to="category/invisibles">Invisibles</Link>
           </Nav>
-          <Nav className="">
-            <Cartwidget />
+          </Navbar.Collapse>
+          <Nav>
+            <Link to='/cart'>
+              <Cartwidget />
+            </Link>
           </Nav>
         </Container>
       </Navbar>

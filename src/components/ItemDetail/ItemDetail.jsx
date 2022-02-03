@@ -1,8 +1,10 @@
 import React from "react";
+// import { productos } from "../../helpers/products";
 
 
 
-function ItemDetail({ products }) {
+
+function ItemDetail({products}) {
 
 
     return (
