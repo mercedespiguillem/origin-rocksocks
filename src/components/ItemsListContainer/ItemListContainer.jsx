@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getProducts from "../../helpers/getProducts";
 
+
 function ItemListContainer(props) {
   // promise // estados // useEffect
 
-  const onAdd = (amount) => {
-    console.log(amount);
-  };
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState({});
@@ -33,12 +31,11 @@ function ItemListContainer(props) {
   return (
     <>
       { loading ? 
-        <h3 style={{ color: "gray" }}>Cargando...</h3> : 
+        <h3 style={{ color: "gray" }} className="m-5 p-5">Cargando...</h3> : 
         <div>
           <div style={{ backgroundColor: "yellow" }}>
             <h3 className="p-3 m-0">{props.greeting}</h3>
           </div>
-          <ItemCount stock={10} initial={1} onAdd={onAdd} />
           <ItemList products={products} />
         </div>
       }

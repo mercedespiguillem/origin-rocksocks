@@ -5,17 +5,14 @@ import { Link } from "react-router-dom";
 
 function Item({ id, name, size, image, category, price }) {
   return (
-    <div className="m-5 d-flex justify-content-between">
-      <Card key={id} className="col-md-6 col-sm-8 mt-5" bg="light">
+    <div className="row m-5 d-flex justify-content-center">
+      <Card key={id} className="col-md-6 col-sm-8 m-3" bg="light">
         <Card.Header>{`${name} - ${size}`}</Card.Header>
         <Card.Body>
-          <img src={image} alt="" className="w-50" />
+          <img src={image} alt="" className="" style={{borderRadius: 10 , width: 300 }} />
         </Card.Body>
-        {/* <div className="card-footer">
-          <ItemDetailContainer />
-        </div> */}
         <Link to={`/item/${id}`}>
-          <button className="btn btn-warning btn-block">Ver producto</button>
+          <button className="btn btn-warning btn-block m-3">Ver producto</button>
         </Link>
       </Card>
     </div>

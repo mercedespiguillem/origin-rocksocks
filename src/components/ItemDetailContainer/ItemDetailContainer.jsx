@@ -21,7 +21,9 @@ function ItemDetailContainer() {
   return (
     <div>
       {loading ? (
-        <h3 style={{ color: "gray" }}>Cargando...</h3>
+        <h3 style={{ color: "gray" }} className="m-5 p-5">
+          Cargando...
+        </h3>
       ) : (
         <ItemDetail products={products} />
       )}

@@ -28,16 +28,16 @@ function ItemCount({ initial, stock, onAdd }) {
     <div>
       <Card className="m-5">
         <Card.Body className="md-6">
-          <Button variant="secondary" size="l" onClick={decrease}>
-            Quitar
-          </Button>
-          <br />
-          {count}
-          <br />
           <Button variant="warning"  size="l" onClick={increase}>
             Agregar
           </Button>
           <br />
+          {count}
+          <br />
+          <Button variant="secondary" size="l" onClick={decrease}>
+            Quitar
+          </Button>
+          <br />          
           <br />
           <div>
             <Button variant="dark" onClick={addToChart}>
