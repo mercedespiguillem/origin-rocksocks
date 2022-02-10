@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 function ItemDetail({ products }) {
+  const { cartList, addToCart } = useCartContext();
   const [counter, setCounter] = useState(0);
 
-  const onAdd = (amount) => {
+  function onAdd(item, amount) {
+    addToCart({ articulo: {...products} , cantidad: item });
     setCounter(amount);
-  };
+  }
+
+  console.log(cartList)
 
   return (
     <div className="row m-5">
@@ -16,7 +21,7 @@ function ItemDetail({ products }) {
         <div>
           <img
             src={products.image}
-            alt="Medias con rayas"
+            alt="Medias"
             style={{ borderRadius: 10, width: 300 }}
             className="m-3 center"
           />
