@@ -10,35 +10,37 @@ export function useCartContext() {
 function CartContextProvider({ children }) {
   const [cartList, setCartList] = useState([]);
 
-  // funcion que agrega el item seleccionado al carrito
+  // funcion que verifica si el item esta en el carrito
 
-  // function isInTheCart(item) {
-  //   if (cartList.find((x) => x === item)) {
-  //     return true;
-  //   }
-  // }
-
-  function addToCart(item) {
-    cartList.find((x) => x === item)
-      ? setCartList([(item.cantidad += 1)])
-      : setCartList([...cartList, item]);
+  function isInTheCart(item) {
+    if (cartList.find((x) => x.articulo.id === item.articulo.id)) {
+      return true;
+    }
   }
 
-  // function addToCart(item) {
-  //   if (isInTheCart(item)) {
-  //     const amount = [...cartList];
-  //     amount.forEach((i) => {
-  //       if (i === item) {
-  //         i.cantidad += 1;
-  //       }
-  //     });
-  //   }
-  // }
+  // funcion que agrega el item seleccionado al carrito
 
-  // function isInTheCart(produc) {
-  //   const findInTheCart = cartList.find((x) => x === produc);
-  //   return findInTheCart;
-  // }
+  function addToCart(item) {
+    if (isInTheCart(item)) {
+      const foundById = cartList.find(
+        (x) => x.articulo.id === item.articulo.id
+      );
+      const filteredCartList = cartList.filter(
+        (x) => x.articulo.id !== item.articulo.id
+      );
+      foundById.cantidad += item.cantidad;
+      setCartList([...filteredCartList, foundById]);
+    } else {
+      setCartList([...cartList, item]);
+    }
+  }
+
+  // funcion que elimina un item del carrito segun su id
+
+  function removeItem(id) {
+    setCartList( cartList.filter( prod => prod.articulo.id !== id ) )
+}
+
 
   // funcion que vacia el carrito
 
@@ -47,7 +49,9 @@ function CartContextProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ cartList, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cartList, isInTheCart, addToCart, removeItem, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
