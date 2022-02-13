@@ -4,13 +4,15 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 
-function ItemDetail({ products }) {
+function ItemDetail({ products }) 
+{
   const { cartList, addToCart } = useCartContext();
   const [counter, setCounter] = useState(0);
 
   function onAdd(item, amount) {
     addToCart({ articulo: {...products} , cantidad: item });
     setCounter(amount);
+
   }
 
   console.log(cartList)
@@ -26,7 +28,8 @@ function ItemDetail({ products }) {
             className="m-3 center"
           />
         </div>
-        <h3 className="m-3">{products.description}</h3>
+        <h2>{products.name}</h2>
+        <h5 className="m-3">{products.description}</h5>
         <h6>Stock: {products.stock}</h6>
         <h6>Precio: {products.price}</h6>
       </div>

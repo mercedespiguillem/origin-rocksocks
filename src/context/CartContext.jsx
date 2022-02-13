@@ -21,6 +21,8 @@ function CartContextProvider({ children }) {
   // funcion que agrega el item seleccionado al carrito
 
   function addToCart(item) {
+    console.log(item);
+
     if (isInTheCart(item)) {
       const foundById = cartList.find(
         (x) => x.articulo.id === item.articulo.id
@@ -29,18 +31,40 @@ function CartContextProvider({ children }) {
         (x) => x.articulo.id !== item.articulo.id
       );
       foundById.cantidad += item.cantidad;
+
       setCartList([...filteredCartList, foundById]);
     } else {
       setCartList([...cartList, item]);
     }
   }
 
+  // funcion que suma el precio total de los productos del carrito
+
+  const totalPrice = () => {
+    return cartList.reduce(
+      (acum, prod) => (acum = acum + prod.articulo.price * prod.cantidad),
+      0
+    );
+  };
+
+  // suma del precio de un mismo item
+
+  function totalPriceItems(item) {
+      return item.cantidad * item.articulo.price;
+    }
+
+
+  // funcion que calcula el total de items en el carrito
+
+  function amount() {
+    return cartList.reduce((acc, prod) => (acc += prod.cantidad), 0);
+  }
+
   // funcion que elimina un item del carrito segun su id
 
   function removeItem(id) {
-    setCartList( cartList.filter( prod => prod.articulo.id !== id ) )
-}
-
+    setCartList(cartList.filter((prod) => prod.articulo.id !== id));
+  }
 
   // funcion que vacia el carrito
 
@@ -50,7 +74,16 @@ function CartContextProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cartList, isInTheCart, addToCart, removeItem, clearCart }}
+      value={{
+        cartList,
+        isInTheCart,
+        addToCart,
+        totalPrice,
+        amount,
+        totalPriceItems,
+        removeItem,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
