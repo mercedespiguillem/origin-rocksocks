@@ -1,3 +1,4 @@
+import { getDoc, doc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getProducts from "../../helpers/getProducts";
@@ -9,13 +10,24 @@ function ItemDetailContainer() {
 
   const { idItem } = useParams();
 
+  const db = getFirestore();
+  const itemRef = doc(db, "items", idItem);
+
   useEffect(() => {
     setLoading(true);
-    getProducts()
-      .then((data) => setProducts(data.find((item) => item.id === idItem)))
+    getDoc(itemRef)
+      .then((resp) => setProducts({ id: resp.id, ...resp.data() }))
       .then(() => console.log(idItem))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
+
+    // asi estaba antes
+
+    // getProducts()
+    //   .then((data) => setProducts(data.find((item) => item.id === idItem)))
+    //   .then(() => console.log(idItem))
+    //   .catch((err) => console.log(err))
+    //   .finally(() => setLoading(false));
   }, [idItem]);
 
   return (
