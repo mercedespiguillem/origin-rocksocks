@@ -5,66 +5,54 @@ import Nav from "react-bootstrap/Nav";
 import Logo from "../LogoSocks/Logo";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import { Badge } from "react-bootstrap";
+import "./NavBar.css";
 
 function NavBar() {
   const { amount } = useCartContext();
 
   return (
-    <div style={{ backgroundColor: "pink" }}>
-      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-        <Logo />
+    <div>
+      <Navbar
+        collapseOnSelect
+        expand="md"
+        bg="dark"
+        variant="dark"
+        sticky="top"
+      >
+        <Link to="/">
+          <Logo />
+        </Link>
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-              <Link
-                className="text-decoration-none"
-                style={{ color: "white" }}
-                to="/"
-              >
+              <Link className="text-decoration-none h3 pr-5 logo" to="/">
                 RockSocks
               </Link>
             </Nav>
             <Nav className="me-auto">
               <Link
-                className="m-3 text-decoration-none"
-                style={{ color: "white" }}
-                to="category/dinosaurios"
+                className="m-3 text-decoration-none p-3 logo"
+                to="category/estampadas"
               >
-                Dinosaurios
+                Estampadas
               </Link>
               <Link
-                className="m-3 text-decoration-none"
-                style={{ color: "white" }}
+                className="m-3 text-decoration-none p-3 logo"
                 to="category/rayadas"
               >
                 Rayadas
-              </Link>
-              <Link
-                className="m-3 text-decoration-none"
-                style={{ color: "white" }}
-                to="category/invisibles"
-              >
-                Invisibles
               </Link>
             </Nav>
           </Navbar.Collapse>
           <Nav>
             <Link to="/cart">
               {amount() !== 0 && (
-                <label
-                  style={{
-                    backgroundColor: "yellow",
-                    color: "black",
-                    borderRadius: 15,
-                  }}
-                  className="p-2 text-decoration-none"
-                >
+                <Badge bg="yellow" className="badge">
                   {amount()}
-                  
-                </label>
+                </Badge>
               )}
-
               <Cartwidget />
             </Link>
           </Nav>

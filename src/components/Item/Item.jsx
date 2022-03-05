@@ -1,21 +1,22 @@
-import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./item.css";
 
-
-function Item({ id, name, size, image, category, price }) {
+function Item({ id, name, size, image }) {
   return (
-    <div className="row m-5 d-flex justify-content-center">
-      <Card key={id} className="col-md-6 col-sm-8 m-3" bg="light">
+    <Col>
+      <Card key={id} className="m-2" bg="light">
         <Card.Header>{`${name} - ${size}`}</Card.Header>
         <Card.Body>
-          <img src={image} alt="" className="" style={{borderRadius: 10 , width: 300 }} />
+          <img src={image} alt="imagen de medias" className="image" />
         </Card.Body>
         <Link to={`/item/${id}`}>
-          <button className="btn btn-warning btn-block m-3">Ver producto</button>
+          <button className="btn btn-warning btn-block m-3 btn-1 ">
+            Ver producto
+          </button>
         </Link>
       </Card>
-    </div>
+    </Col>
   );
 }
 

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import "./itemCount.css";
 
 function ItemCount({ initial, stock, onAdd }) {
   // Inicializo el contador en 1
@@ -28,19 +29,23 @@ function ItemCount({ initial, stock, onAdd }) {
     <div>
       <Card className="m-5">
         <Card.Body className="md-6">
-          <Button variant="warning"  size="l" onClick={increase}>
+          <Button
+            variant="warning"
+            onClick={increase}
+            className="w-25 p-2 btn-1"
+          >
             Agregar
           </Button>
           <br />
           {count}
           <br />
-          <Button variant="secondary" size="l" onClick={decrease}>
+          <Button variant="secondary" onClick={decrease} className="w-25 p-2">
             Quitar
           </Button>
-          <br />          
+          <br />
           <br />
           <div>
-            <Button variant="dark" onClick={addToChart}>
+            <Button variant="dark" onClick={addToChart} className="p-2 w-50">
               Agregar al carrito
             </Button>
           </div>
@@ -50,4 +55,4 @@ function ItemCount({ initial, stock, onAdd }) {
   );
 }
 
-export default ItemCount
+export default ItemCount;

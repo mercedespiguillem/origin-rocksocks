@@ -9,7 +9,6 @@ import ItemListContainer from "./components/ItemsListContainer/ItemListContainer
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 
 function App() {
-
   return (
     <CartContextProvider>
       <BrowserRouter>
@@ -21,7 +20,7 @@ function App() {
               exact
               path="/"
               element={
-                <ItemListContainer greeting="Hola, bienvenidos a Rocksocks!" />
+                <ItemListContainer greeting="Hola, bienvenidos a Rocksocks - Tu media naranja ;)" />
               }
             />
             <Route

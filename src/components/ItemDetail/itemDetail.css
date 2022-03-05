@@ -1,0 +1,22 @@
+.image {
+  border-radius: 10px;
+  width: auto;
+}
+
+.btn-finish {
+  background-color: yellow;
+  color: black;
+}
+
+.title {
+  color: rgb(189, 189, 3);
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.btn-1 {
+  background-color: yellow;
+  color: black;
+}
+
+
